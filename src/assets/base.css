@@ -36,17 +36,6 @@
   --section-gap: 160px;
 }
 
-
-:root {
-  --primary-color: #000955; 
-  --secondary-color: #9C00FF; 
-  --primary-color75: #8e9195; 
-  --primary-color50: #b5b7ba; 
-  --primary-color25: #dadbdd; 
-  --cta-color: #00FF00; 
-  --text-color: #FFFFFF; 
-  --background-color: rgba(0, 0, 0, 0.1);
-}
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined', sans-serif;
   font-weight: normal;

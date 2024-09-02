@@ -15,7 +15,6 @@ export default {
     .then(response => response.json())
     .then(data => {
       this.user = data; 
-      console.log(data);
     })
     .catch(error => console.error('Error:', error));
   }

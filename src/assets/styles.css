@@ -1,5 +1,78 @@
 @import './base.css';
 
+:root {
+  /* Primary and Secondary Colors */
+  --primary-color: #000955;
+  --secondary-color: #9C00FF;
+  --primary-color75: #8e9195;
+  --primary-color50: #b5b7ba;
+  --primary-color25: #dadbdd;
+
+  /* Call to Action and Text Colors */
+  --cta-color: #00FF00;
+  --text-color: #FFFFFF;
+
+  /* Background and Border Colors */
+  --background-color: rgba(0, 0, 0, 0.1);
+  --border-color: rgba(0, 0, 0, 0.15);
+
+  /* Field Colors */
+  --field-bg-color: rgba(255, 255, 255, 0.2);
+  --field-color: var(--text-color);
+
+  /* Input Colors */
+  --input-bg-color: rgba(0, 0, 0, 0.1);
+  --input-color: var(--text-color);
+
+  /* Textarea Colors */
+  --textarea-bg-color: rgba(0, 0, 0, 0.2);
+  --textarea-color: var(--text-color);
+
+  /* Button Colors */
+  --final-button-bg-color: rgba(105, 64, 168, 0.6);
+  --final-button-color: var(--text-color);
+
+  /* Dropdown Colors */
+  --dropdown-item-bg-color: rgba(0, 0, 0, 0.7);
+  --dropdown-item-color: var(--text-color);
+  --dropdown-item-hover-bg-color: rgba(255, 255, 255, 0.7);
+
+  /* Header Item Colors */
+  --header-item-bg-color: rgba(0, 0, 0, 0.2);
+  --header-item-color: var(--text-color);
+  --header-item-hover-bg-color: rgba(255, 255, 255, 0.2);
+  --header-item-hover-color: var(--text-color);
+
+  /* Dropdown Menu Colors */
+  --dropdown-menu-bg-color: rgba(0, 0, 0, 0.2);
+  --dropdown-menu-color: var(--text-color);
+
+  /* Miscellaneous Colors */
+  --button-hover-bg-color: rgba(0, 0, 0, 0.3);
+  --placeholder-color: rgba(255, 255, 255, 0.6);
+  --delete-field-bg-color: rgba(0, 0, 0, 0.2);
+  --a-color: var(--text-color);
+
+  /* App Background */
+  --app-bg: linear-gradient(150deg, var(--primary-color), var(--secondary-color));
+
+  /* Header and Footer Colors */
+  --header-footer-bg-color: rgba(0, 0, 0, 0.5);
+  --header-footer-color: var(--text-color);
+
+  /* Card Colors */
+  --card-bg-color: var(--background-color);
+  --card-border-color: var(--primary-color50);
+  --card-title-color: var(--text-color);
+  --card-title-border-color: var(--secondary-color);
+  --card-body-color: var(--text-color);
+
+  /* List Colors */
+  --list-item-bg-color: rgba(0, 0, 0, 0.0);
+  --list-item-border-color: var(--primary-color50);
+  --list-item-color: var(--text-color);
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -7,7 +80,7 @@ html, body {
   width: 100%;
 }
 
-p { 
+p {
   margin: 0;
 }
 
@@ -21,35 +94,38 @@ p {
 }
 
 .container > .field > * {
-  background-color: rgba(255, 255, 255, 0.2);
-  border: 2px solid white;
+  background-color: var(--field-bg-color);
+  border: 2px solid var(--field-color);
   border-radius: 12px;
   margin: 3px;
 }
 
 .field > * {
-  color: white;
+  color: var(--field-color);
 }
 
-input, textarea {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: white;
+input {
+  background-color: var(--background-color);
+  color: var(--field-color);
+  border-color: var(--border-color);
+}
+
+textarea {
+  background-color: var(--field-bg-color);
+  padding-bottom: 35px;
+  color: var(--field-color);
+  border-color: var(--border-color);
 }
 
 .final_button {
   width: 300px;
-  background-color: rgba(105, 64, 168, 0.631);
-  color: whitesmoke;
+  background-color: var(--final-button-bg-color);
+  color: var(--field-color);
   display: flex;
   justify-content: center;
-  border: 2px solid wheat;
+  border: 2px solid var(--field-color);
   border-radius: 12px;
   margin: 3px;
-}
-
-#form_btn {
-  background-color: black;
-  color: white;
 }
 
 .header_item {
@@ -58,24 +134,24 @@ input, textarea {
 }
 
 .dropdown-item {
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
+  background-color: var(--dropdown-item-bg-color);
+  color: var(--dropdown-item-color);
 }
 
 .dropdown-item:hover {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: var(--dropdown-item-hover-bg-color);
 }
 
 .header_item, .dropdown-menu {
-  background-color: rgba(0, 0, 0, 0.2);
-  color: white;
+  background-color: var(--header-item-bg-color);
+  color: var(--header-item-color);
 }
 
 .header_item:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: white;
+  background-color: var(--header-item-hover-bg-color);
+  color: var(--header-item-hover-color);
   border-radius: 15px;
-  border: 5px solid white;
+  border: 5px solid var(--header-item-hover-color);
 }
 
 .buttons {
@@ -89,10 +165,6 @@ input, textarea {
   flex-grow: 1;
 }
 
-textarea {
-  padding-bottom: 35px;
-}
-
 .delete {
   flex-grow: 0;
 }
@@ -103,11 +175,11 @@ textarea {
 }
 
 button:hover {
-  background-color: rgba(0, 0, 0, 30%);
+  background-color: var(--button-hover-bg-color);
 }
 
 input::placeholder, textarea::placeholder {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--placeholder-color);
 }
 
 .field > p {
@@ -117,7 +189,7 @@ input::placeholder, textarea::placeholder {
 }
 
 .delete_field {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: var(--delete-field-bg-color);
   min-width: 150px;
   max-width: 250px;
 }
@@ -132,7 +204,7 @@ input::placeholder, textarea::placeholder {
 }
 
 a {
-  color: #ffffff;
+  color: var(--a-color);
   text-decoration: none;
 }
 
@@ -145,7 +217,7 @@ a:hover {
   width: 100%;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(150deg, var(--primary-color), var(--secondary-color));
+  background: var(--app-bg);
   font-size: 1rem;
   color: var(--text-color);
 }
@@ -160,17 +232,17 @@ a:hover {
 }
 
 header, footer {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: var(--text-color);
+  background-color: var(--header-footer-bg-color);
+  color: var(--header-footer-color);
 }
 
 .card-title {
-  font-size: 1.5rem; 
+  font-size: 1.5rem;
   font-weight: bold;
-  color: var(--text-color);
+  color: var(--card-title-color);
   margin-bottom: 1rem;
-  border-bottom: 2px solid var(--secondary-color); 
-  padding-bottom: 0.5rem; 
+  border-bottom: 2px solid var(--card-title-border-color);
+  padding-bottom: 0.5rem;
 }
 
 .card-text {
@@ -178,8 +250,8 @@ header, footer {
 }
 
 .card-body {
-  background-color: var(--background-color);
-  color: var(--text-color);
+  background-color: var(--card-bg-color);
+  color: var(--card-body-color);
   padding: 1rem;
   border-radius: 0.5rem;
   flex-grow: 1;
@@ -195,15 +267,15 @@ header, footer {
   color: var(--text-color);
 }
 
-.card {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  border: 1px solid var(--primary-color50);
+.card, .card > img {
+  background-color: var(--card-bg-color);
+  color: var(--card-body-color);
+  border: 1px solid var(--card-border-color);
   border-radius: 0.5rem;
 }
 
 .list-group-item {
-  background-color: rgba(0, 0, 0, 0.0);
-  color: var(--text-color);
-  border: 1px solid var(--primary-color50);
+  background-color: var(--list-item-bg-color);
+  color: var(--list-item-color);
+  border: 1px solid var(--list-item-border-color);
 }
