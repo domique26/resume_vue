@@ -1,9 +1,11 @@
 <script>
 import DropdownMenu from './DropdownMenu.vue';
+import ThemeSwitch from './ThemeSwitch.vue';
 
 export default {
   components: {
     DropdownMenu,
+    ThemeSwitch
   },
   data() {
     return { 
@@ -36,6 +38,7 @@ export default {
   <header class="container-fluid">
     <div class="row">
       <div class="col-3">
+        <ThemeSwitch/>
       </div>
       <div class="col-6 d-flex justify-content-between align-items-center p-3">
         <img id="logo" src="../assets/images/sybit_logo_new.png" alt="Logo" class="logo me-3 d-none d-md-block">

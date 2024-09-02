@@ -1,6 +1,6 @@
 <template id="form">
   <Header></Header>
-  <div class="container d-flex flex-column">
+  <div class="form-container container d-flex flex-column">
     <FormField>
       <input v-model="pic" placeholder="Profile Picture Path" />
       <button type="submit" @click="add_pic">Add Picture</button>
