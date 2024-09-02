@@ -2,8 +2,15 @@
   <Header></Header>
   <div class="container d-flex flex-column">
     <FormField>
-      <input v-model="user.path" placeholder="Profile Picture Path" />
+      <input v-model="pic" placeholder="Profile Picture Path" />
+      <button type="submit" @click="add_pic">Add Picture</button>
     </FormField>
+
+    <FormField v-if="user.pics.length" v-for="(pic, index) in user.pics" :key="index">
+      <p>{{ pic }}</p>
+      <button class="delete_field" @click="deleteField(user.pics, index)">x</button>
+    </FormField>
+
     <FormField>
       <input v-model="user.first_name" placeholder="First Name*" />
       <input v-model="user.last_name" placeholder="Last Name*" />
@@ -105,6 +112,7 @@ export default {
   },
   data() {
     return {
+      pic: "",
       contact_key: "",
       contact_value: "",
       email_value: "",
@@ -123,7 +131,7 @@ export default {
       ref_name: "",
       ref_title: "",
       user: {
-        path:"",
+        pics:[],
         first_name: "",
         last_name: "",
         sum: "",
@@ -151,6 +159,7 @@ export default {
     async add_user() { 
       const dataToSave = Array.isArray(this.user) ? this.user : [this.user];
       const result = await this.v$.$validate()
+      console.log(result);
       if (!result) {
         window.alert('User Form is invalid.');
         console.log('Invalid user form');
@@ -168,9 +177,13 @@ export default {
       .then(data => console.log(data))
       .catch(error => console.error('Error:', error));
     },
+    add_pic() {
+      this.user.pics.push( this.pic );
+      this.pic = '';
+    },
     add_email() {
       this.v$.$touch()
-      if (!this.v$.email_value.$invalid) {
+      if (!(this.v$.email_value.$invalid) && this.email_value.length>3) {
         this.user.contacts.push({ key: "Email", value: this.email_value })
         this.email_value = '';
       } else {

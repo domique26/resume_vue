@@ -11,7 +11,6 @@ export default {
     return { 
       id: 0,
       user: {},
-      path: ""
     };
   },
   created() {
@@ -25,7 +24,6 @@ export default {
     .then(response => response.json()) 
     .then(data => {
       this.user = data;
-      this.path = this.user.path;
       console.log(data);
     })
     .catch(error => {
@@ -37,9 +35,10 @@ export default {
 
 <template>
   <div class="container my-4 d-flex flex-column" id="ctx">
-    <div class="row pt-3">
+    <div class="row pt-3 d-flex">
       <div class="col-md-4 d-flex flex-column align-items-stretch">
-        <ProfilePicture :src="path" :alt="path" />
+        <ProfilePicture :user="this.user"/>
+        
         <Card v-if="user.contacts" title="Contact">
           <ul>
             <li v-for="(contact, index) in user.contacts" :key="index">
