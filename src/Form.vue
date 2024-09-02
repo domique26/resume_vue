@@ -5,10 +5,16 @@
       <input v-model="user.path" placeholder="Profile Picture Path" />
     </FormField>
     <FormField>
-      <input v-model="user.first_name" placeholder="First Name" />
-      <input v-model="user.last_name" placeholder="Last Name" />
+      <input v-model="user.first_name" placeholder="First Name*" />
+      <input v-model="user.last_name" placeholder="Last Name*" />
     </FormField>
     <textarea class="mb-2" v-model="user.sum" placeholder="Add your bio"></textarea>
+
+    <FormField>
+      <input value="Email" readonly />
+      <input v-model="email_value" placeholder=" Value* " />
+      <button type="submit" @click="add_email">Add Email</button>
+    </FormField>
 
     <FormField>
       <input v-model="contact_key" placeholder=" Key " />
@@ -87,15 +93,69 @@
   <p>{{ user }}</p>
   <button class="final_button" @click="add_user"> ADD USER </button>
 </template>
-
 <script>
 import FormField from './components/FormField.vue';
 import Header from './components/Header.vue';
+import useVuelidate from '@vuelidate/core'
+import { required, email } from '@vuelidate/validators'
 
 export default {
+  setup () {
+    return { v$: useVuelidate() }
+  },
+  data() {
+    return {
+      contact_key: "",
+      contact_value: "",
+      email_value: "",
+      skill_title: "",
+      skill_duration: "",
+      experience_company: "",
+      experience_role: "",
+      experience_duration: "",
+      experience_description: "",
+      education_institution: "",
+      education_degree: "",
+      education_years: "",
+      project_title: "",
+      project_description: "",
+      project_years: "",
+      ref_name: "",
+      ref_title: "",
+      user: {
+        path:"",
+        first_name: "",
+        last_name: "",
+        sum: "",
+        contacts: [],
+        resume: {
+          skills: [],
+          experience: [],
+          education: [],
+          projects: [],
+          references: []
+        }
+      }
+    };
+  },
+  validations () {
+    return {
+      user: {
+        first_name: { required },
+        last_name: { required }
+      },
+      email_value: { email }
+    }
+  },
   methods: {
-    add_user() { 
+    async add_user() { 
       const dataToSave = Array.isArray(this.user) ? this.user : [this.user];
+      const result = await this.v$.$validate()
+      if (!result) {
+        window.alert('User Form is invalid.');
+        console.log('Invalid user form');
+        return;
+      }
 
       fetch('http://localhost:3000/users', {
         method: 'POST',
@@ -107,6 +167,17 @@ export default {
       .then(response => response.text())
       .then(data => console.log(data))
       .catch(error => console.error('Error:', error));
+    },
+    add_email() {
+      this.v$.$touch()
+      if (!this.v$.email_value.$invalid) {
+        this.user.contacts.push({ key: "Email", value: this.email_value })
+        this.email_value = '';
+      } else {
+        window.alert('Invalid Email!');
+        this.email_value = '';
+        console.log('Invalid email');
+      }
     },
     add_ref() {
       this.user.resume.references.push({ name: this.ref_name, title: this.ref_title });
@@ -159,59 +230,9 @@ export default {
       array.splice(index, 1);
     }
   },
-  data() {
-    return {
-      contact_key: "",
-      contact_value: "",
-      skill_title: "",
-      skill_duration: "",
-      experience_company: "",
-      experience_role: "",
-      experience_duration: "",
-      experience_description: "",
-      education_institution: "",
-      education_degree: "",
-      education_years: "",
-      project_title: "",
-      project_description: "",
-      project_years: "",
-      ref_name: "",
-      ref_title: "",
-      user: {
-        path:"",
-        first_name: "",
-        last_name: "",
-        sum: "",
-        contacts: [],
-        resume: {
-          skills: [],
-          experience: [],
-          education: [],
-          projects: [],
-          references: []
-        }
-      }
-    };
-  },
   components: {
     FormField,
     Header
   }
 };
 </script>
-
-<style>
-.field input, .field button {
-  margin: 0px 0px;
-  padding: 7px;
-  flex-grow: 1;
-}
-
-textarea {
-  padding-bottom: 35px;
-}
-
-.delete {
-  flex-grow: 0;
-}
-</style>

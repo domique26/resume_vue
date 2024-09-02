@@ -7,6 +7,139 @@ html, body {
   width: 100%;
 }
 
+p { 
+  margin: 0;
+}
+
+.field {
+  width: 100%;
+  flex-grow: 1;
+  align-items: stretch;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.container > .field > * {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid white;
+  border-radius: 12px;
+  margin: 3px;
+}
+
+.field > * {
+  color: white;
+}
+
+input, textarea {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.final_button {
+  width: 300px;
+  background-color: rgba(105, 64, 168, 0.631);
+  color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  border: 2px solid wheat;
+  border-radius: 12px;
+  margin: 3px;
+}
+
+#form_btn {
+  background-color: black;
+  color: white;
+}
+
+.header_item {
+  padding: 5px;
+  border: none;
+}
+
+.dropdown-item {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.header_item, .dropdown-menu {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+.header_item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 15px;
+  border: 5px solid white;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.field input, .field button {
+  margin: 0;
+  padding: 7px;
+  flex-grow: 1;
+}
+
+textarea {
+  padding-bottom: 35px;
+}
+
+.delete {
+  flex-grow: 0;
+}
+
+.header-box {
+  display: flex;
+  align-items: center;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 0, 30%);
+}
+
+input::placeholder, textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.field > p {
+  flex-grow: 1;
+  text-align: center;
+  padding: 6px;
+}
+
+.delete_field {
+  background-color: rgba(0, 0, 0, 0.2);
+  min-width: 150px;
+  max-width: 250px;
+}
+
+.user-item {
+  display: flex;
+  align-items: center;
+}
+
+.delete-button {
+  margin-left: 10px;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 #app {
   min-height: 100%;
   width: 100%;
@@ -73,4 +206,4 @@ header, footer {
   background-color: rgba(0, 0, 0, 0.0);
   color: var(--text-color);
   border: 1px solid var(--primary-color50);
-}  
+}

@@ -32,13 +32,3 @@ export default {
     </ul>
   </footer>
 </template>
-
-<style>
-a {
-  color: #ffffff;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-</style>

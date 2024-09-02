@@ -92,9 +92,3 @@ export default {
     </div>
   </div>
 </template>
-
-<style>
-p { 
-  margin: 0;
-}
-</style>

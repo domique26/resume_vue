@@ -11,10 +11,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.buttons {
-  display: flex;
-  gap: 20px;
-}
-</style>
