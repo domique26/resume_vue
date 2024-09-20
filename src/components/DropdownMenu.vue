@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     fetchUsers() {
-      fetch(`http://localhost:3000/users/`, {
+      fetch(`http://localhost:8000/users/`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ export default {
       this.$router.push({ path: `/users/${user._id}` });
     },
     deleteUser(user, index) {
-      fetch(`http://localhost:3000/users/${user._id}`, {
+      fetch(`http://localhost:8000/users/${user._id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'

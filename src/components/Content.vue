@@ -15,7 +15,7 @@ export default {
   },
   created() {
     this.id = this.$route.params.id;
-    fetch(`http://localhost:3000/users/${this.id}`, {
+    fetch(`http://localhost:8000/users/${this.id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

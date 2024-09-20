@@ -6,7 +6,7 @@ export default {
     };
   },
   created() {
-    fetch(`http://localhost:3000/users/${this.$route.params.id}`, {
+    fetch(`http://localhost:8000/users/${this.$route.params.id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
